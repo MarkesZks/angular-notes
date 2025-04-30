@@ -1,0 +1,49 @@
+# Dependências do Node.js
+node_modules/
+
+# Arquivos de lock (geralmente, pode ser ignorado, mas fica a critério)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Diretórios de build do Angular
+/dist/
+/out-tsc/
+/build/
+
+# Arquivos temporários do editor
+.vscode/
+/.idea/
+
+# Arquivos gerados pelo sistema operacional (como arquivos temporários)
+.DS_Store
+Thumbs.db
+
+# Arquivos de log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Arquivos de ambiente
+.env
+.env.local
+.env.*.local
+
+# Arquivos de configuração do editor/IDE
+*.sublime-workspace
+*.sublime-project
+*.code-workspace
+
+# Arquivos de teste gerados
+/coverage/
+
+# Arquivos temporários criados durante execução (como os de cache)
+.cache/
+tmp/
+*.swp
+
+# Arquivos específicos do Angular
+.angular/
+
+# Arquivos de build específicos de ferramentas
+/lib/

@@ -1,0 +1,15 @@
+
+.erro__imagem {
+    width: 16px;
+    height: 16px;
+    margin: 0 .5em;
+    background-image: url('/assets/img/warning.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  
+  .erro__texto {
+    font-size: 12px;
+    line-height: 18px;
+    color: var(--vermelho);
+  }

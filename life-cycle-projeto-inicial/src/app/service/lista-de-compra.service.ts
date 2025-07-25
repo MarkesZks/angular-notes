@@ -5,28 +5,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ListaDeCompraService {
-  private listaDeCompra: Item[] = [
-    {
-      id: 1,
-      nome: 'Queijo prato',
-      data: 'Segunda-feira (31/10/2022) às 08:30',
-      comprado: false,
-    },
-    {
-      id: 2,
-      nome: 'Leite integral',
-      data: 'Segunda-feira (31/10/2022) às 08:30',
-      comprado: false,
-    },
-    {
-      id: 3,
-      nome: 'Mamão papaia',
-      data: 'Segunda-feira (31/10/2022) às 08:30',
-      comprado: true,
-    },
-  ];
+  private listaDeCompra: Item[] = [];
 
   constructor() {
+    this.listaDeCompra = JSON.parse(localStorage.getItem('itens')|| '[]')
     console.log('Instanciando dependências necessárias para o serviço.');
   }
 
@@ -44,11 +26,30 @@ export class ListaDeCompraService {
     };
     return item;
   }
-  adicionarItemNaListe(nomeDoItem:string){
-    const item =this.criarItem(nomeDoItem);
+  adicionarItemNaListe(nomeDoItem: string) {
+    const item = this.criarItem(nomeDoItem);
     this.listaDeCompra.push(item);
+    //this.atualizarLista()
   }
-  removerItem(id:number):void{
-     this.listaDeCompra = this.listaDeCompra.filter(item => item.id !== id)
+  editarItemDaLista(itemAntigo: Item, nomeEditadoDoItem: string) {
+    const itemEditado: Item = {
+      id: itemAntigo.id,
+      nome: nomeEditadoDoItem,
+      data: new Date().toLocaleDateString('pt-BR'),
+      comprado: itemAntigo.comprado,
+
+    };
+    const id = itemAntigo.id;
+    this.listaDeCompra.splice(Number(id) - 1, 1, itemEditado);
+
   }
+  removerItem(id?: number|string): void {
+    this.listaDeCompra = this.listaDeCompra.filter((item) => item.id !== id);
+     localStorage.removeItem('itens');
+  }
+
+  atualizarLista(){
+    localStorage.setItem('itens',JSON.stringify(this.listaDeCompra));
+  }
+
 }
